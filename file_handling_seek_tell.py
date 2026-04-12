@@ -1,36 +1,27 @@
-#Creating file using 'w' mode
-file = open("sample.txt","w")
-file.write("Hello World\nPython\n")
+#Create and write to a file
+file = open("data.txt","w")
+file.write("Hello World!\n")
+file.write("Welcome to vvitu\n")
 file.close()
-print("After 'w' mode 	(created file):")
-file = open("sample.txt","r")
+#Read the file and use tell()
+file = open("data.txt","r")
+print("Initial cursor position:",file.tell())
+content = file.read(5)
+print("Read content:",content)
+print("Cursor position after reading 5 chars:",file.tell())
+#use seek()
+file.seek(0) # MOve cursor back beginning
+print("Cursor position after seek(0):",file.tell())
 content = file.read()
-print("Content reading = ",content)
+print("Full content after seek:\n",content)
+#Append data using "a" mode
+file = open("data.txt","a")
+file.write("This is appended text.\n")
 file.close()
-# Read and Write using 'r+'
-file = open("sample.txt","r+")
-print("\nUsing 'r+' mode (original content ) : ",file.read())
-file.seek(0)
-file.write("Hi")
-file.close()
-file = open("sample.txt","r")
-print("Content after modification : ",file.read())
-file.close()
-#Append uisng 'a' mode
-file = open("sample.txt","a")
-file.write("New line added using 'a'(mode)")
-file.close()
-file = open("sample.txt","r")
-print("After 'a' mode:")
-print(file.read())
-file.close()
-#Append and Read using 'a+' mode
-file = open("data.txt", "a+")
-file.write("Extra Line using a+\n")
+print("Data appended successfully!")
+#Read the file after appending data
+file = open("data.txt","r")
+content = file.read()
+print("Content after appending = ",content)
 
-file.seek(0)
-print("\nUsing 'a+' mode:")
-print(file.read())
-
-file.close()
 
